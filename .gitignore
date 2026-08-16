@@ -25,6 +25,8 @@ frontend/node_modules/
 admin/node_modules/
 frontend/.next/
 admin/.next/
+frontend/.env.local
+admin/.env.local
 
 # OS
 .DS_Store
