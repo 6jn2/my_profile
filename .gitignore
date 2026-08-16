@@ -20,11 +20,11 @@ database/database.sqlite
 /bootstrap/cache/*.php
 .phpunit.result.cache
 
-# Next.js apps (separate repos)
-/frontend/
-/admin/
-/frontend
-/admin
+# Next.js node_modules only
+frontend/node_modules/
+admin/node_modules/
+frontend/.next/
+admin/.next/
 
 # OS
 .DS_Store
