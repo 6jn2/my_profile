@@ -8,8 +8,9 @@ cmds = ["composer install --no-dev --optimize-autoloader"]
 cmds = [
   "php artisan config:cache",
   "php artisan route:cache",
-  "php artisan view:cache"
+  "php artisan view:cache",
+  "chmod +x start.sh"
 ]
 
 [start]
-cmd = "php artisan migrate --force && php artisan db:seed --class=AdminUserSeeder --force && php artisan db:seed --class=ProductionDataSeeder --force && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=$PORT"
+cmd = "bash start.sh"
