@@ -12,6 +12,7 @@ cmds = [
   "php artisan view:cache",
   "php artisan migrate --force",
   "php artisan db:seed --class=AdminUserSeeder --force",
+  "php artisan db:seed --class=ProductionDataSeeder --force",
   "php artisan storage:link"
 ]
 
