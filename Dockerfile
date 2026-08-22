@@ -11,16 +11,14 @@ WORKDIR /app
 
 COPY . .
 
-RUN composer install --no-dev --optimize-autoloader --no-interaction
-
-RUN chmod -R 777 storage bootstrap/cache \
-    && php artisan view:cache || true
+RUN composer install --no-dev --optimize-autoloader --no-interaction \
+    && chmod -R 777 storage bootstrap/cache
 
 EXPOSE 8000
 
-CMD php artisan config:clear \
-    && php artisan migrate --force \
-    && php artisan db:seed --class=AdminUserSeeder --force \
-    && php artisan db:seed --class=ProductionDataSeeder --force \
-    && php artisan storage:link || true \
-    && php artisan serve --host=0.0.0.0 --port=8000
+CMD php artisan config:clear 2>/dev/null; \
+    php artisan migrate --force 2>&1; \
+    php artisan db:seed --class=AdminUserSeeder --force 2>&1 || true; \
+    php artisan db:seed --class=ProductionDataSeeder --force 2>&1 || true; \
+    php artisan storage:link 2>&1 || true; \
+    php artisan serve --host=0.0.0.0 --port=8000
